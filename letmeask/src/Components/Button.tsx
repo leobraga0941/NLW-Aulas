@@ -1,3 +1,19 @@
+import { ButtonHTMLAttributes } from 'react'
+
+import '../styles/button.scss'
+
+type ButtonProps = ButtonHTMLAttributes <HTMLButtonElement>;
+
+export function Button(props: ButtonProps) {
+  return (
+    <button className="button" {...props} />
+  )
+}
+
+
+
+
+
 /*
 //criação das propriedades do botão
 type ButtonProps = {
@@ -6,6 +22,7 @@ type ButtonProps = {
   text?: string;
 }
 */
+/* exemplos utilizados para aprensizadagem
 
 import { useState } from "react"
 
@@ -29,4 +46,5 @@ export function Button() {
       {counter}
     </button>
   )
-}
+} 
+*/
