@@ -1,6 +1,8 @@
 //useHistoy - para roteamento utilizando botão
 import { useHistory } from 'react-router-dom';
 
+import { auth, firebase } from '../services/firebase';
+
 //Importar o arquivo e utlizar o a varipavel no HTML
 import illustrationIMG from '../assets/images/illustration.svg'
 import logoImg from '../assets/images/logo.svg';
@@ -16,8 +18,14 @@ import '../styles/auth.scss'
 export function Home() {
   const history = useHistory();
 
-  function navigateToNewRoom() {
-    history.push('/rooms/new');
+  function handleCreateRoom() {
+    const provider = new firebase.auth.GoogleAuthProvider();
+
+    auth.signInWithPopup(provider).then(result => {
+      console.log(result);
+    
+      history.push('/rooms/new');
+    })
   }
 
   return (
@@ -30,7 +38,7 @@ export function Home() {
         <main>
           <div className="main-content">
             <img src={logoImg} alt="Letmeask" />
-            <button onClick={navigateToNewRoom} className="create-room">
+            <button onClick={handleCreateRoom} className="create-room">
               <img src={googleIconImg} alt="Logo do Google" />
               Crie sua sala com o Google
             </button>
