@@ -13,19 +13,20 @@ import { Button } from '../components/Button';
 
 //importar o css na página que utilizará
 import '../styles/auth.scss'
+import { useContext } from 'react';
+import { AuthContext } from '../App';
 
 
 export function Home() {
   const history = useHistory();
+  const { user, signInWithGoogle} = useContext(AuthContext)
 
-  function handleCreateRoom() {
-    const provider = new firebase.auth.GoogleAuthProvider();
+  async function handleCreateRoom() {   
+    if (!user) {
+      await signInWithGoogle();
+    }
 
-    auth.signInWithPopup(provider).then(result => {
-      console.log(result);
-    
       history.push('/rooms/new');
-    })
   }
 
   return (
