@@ -1,6 +1,4 @@
-import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { AuthContext } from '../App';
 
 //Importar o arquivo e utlizar o a varipavel no HTML
 import illustrationIMG from '../assets/images/illustration.svg'
@@ -8,13 +6,14 @@ import logoImg from '../assets/images/logo.svg';
 
 //importar os components
 import { Button } from '../components/Button';
+//import { useAuth } from '../hooks/useAuth';
 
 //importar o css na página que utilizará
 import '../styles/auth.scss'
 
 
 export function NewRoom() {
-  const { user } = useContext(AuthContext);
+ // const { user } = useAuth();
 
   return (
     <div id="page-auth">
@@ -26,7 +25,6 @@ export function NewRoom() {
         <main>
           <div className="main-content">
             <img src={logoImg} alt="Letmeask" />
-            <h1>{user?.name}</h1>
             <h2>Criar nova sala</h2>
             <form>
               <input 
