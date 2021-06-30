@@ -17,7 +17,6 @@ import { useAuth } from '../hooks/useAuth';
 
 
 export function NewRoom() {
- // const { user } = useAuth(); 
  const { user } = useAuth();
  const history = useHistory();
  const [newRoom, setNewRoom] = useState('');
